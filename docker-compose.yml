@@ -5,16 +5,39 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: nisa_phone
-    restart: unless-stopped
     ports:
       - "3309:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - nisa_network
 
+  anisatrilestari-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: anisatrilestari_app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nisa_phone
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - nisa_network
 
 volumes:
   mysql_data:
-    driver: local
 
 networks:
   nisa_network:
