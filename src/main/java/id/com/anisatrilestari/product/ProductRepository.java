@@ -1,6 +1,5 @@
-package id.com.anisatrilestari;
+package id.com.anisatrilestari.product;
 
-import id.com.anisatrilestari.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {

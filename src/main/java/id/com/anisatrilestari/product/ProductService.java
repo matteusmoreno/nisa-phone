@@ -1,6 +1,5 @@
 package id.com.anisatrilestari.product;
 
-import id.com.anisatrilestari.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
