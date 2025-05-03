@@ -7,12 +7,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+// Respons untuk detail penjualan
 public record SaleDetailsResponse(
         Long id,
         Customer customer,
         List<Product> products,
         BigDecimal totalPrice,
         LocalDateTime dateOfSale) {
+
+    // Konstruktor untuk mengubah entitas Sale menjadi respons
     public SaleDetailsResponse(Sale sale) {
         this(
                 sale.getId(),

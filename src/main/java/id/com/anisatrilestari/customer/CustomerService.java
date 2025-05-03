@@ -3,6 +3,7 @@ package id.com.anisatrilestari.customer;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+// Service yang berisi logika bisnis untuk pelanggan
 @Service
 public class CustomerService {
 
@@ -12,6 +13,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    // Membuat pelanggan baru
     @Transactional
     public Customer createCustomer(CreateCustomerRequest request) {
         Customer customer = Customer.builder()
@@ -24,11 +26,13 @@ public class CustomerService {
         return customer;
     }
 
+    // Mencari pelanggan berdasarkan ID
     public Customer findCustomerById(Long id) {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
     }
 
+    // Memperbarui data pelanggan
     @Transactional
     public Customer updateCustomer(UpdateCustomerRequest request) {
         Customer customer = customerRepository.findById(request.id())
@@ -45,6 +49,7 @@ public class CustomerService {
         return customer;
     }
 
+    // Menghapus pelanggan berdasarkan ID
     @Transactional
     public void deleteCustomer(Long id) {
         Customer customer = customerRepository.findById(id)
