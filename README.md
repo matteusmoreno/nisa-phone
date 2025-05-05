@@ -1,7 +1,3 @@
-Berikut adalah contoh file `README.md` dalam bahasa Indonesia untuk repositori Anda:
-
----
-
 # 📱 Nisa Phone
 
 **Nisa Phone** adalah aplikasi backend berbasis Java yang dikembangkan menggunakan Spring Boot. Aplikasi ini dirancang untuk mengelola data terkait kontak dan informasi pengguna, serta menyediakan API RESTful yang dapat diakses oleh aplikasi frontend atau layanan lainnya.
